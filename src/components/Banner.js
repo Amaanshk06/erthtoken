@@ -4,32 +4,12 @@ import { FaTelegramPlane, FaTwitter } from "react-icons/fa";
 
 const Banner = () => {
   const [showForm, setShowForm] = useState(false);
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-      const response = await fetch("YOUR_GOOGLE_SCRIPT_WEB_APP_URL", {
-        method: "POST",
-        body: JSON.stringify(formData),
-        headers: { "Content-Type": "application/json" },
-      });
-
-      const result = await response.json();
-      if (result.status === "success") {
-        alert("Form submitted successfully!");
-        setShowForm(false);
-        setFormData({ name: "", email: "", message: "" });
-      }
-    } catch (error) {
-      console.error("Error!", error.message);
-      alert("Something went wrong. Try again.");
-    }
+  const handleDownload = () => {
+    const link = document.createElement("a");
+    link.href = "/assets/docs/documentation.pdf";
+    link.download = "documentation.pdf";
+    link.click();
   };
 
   return (
@@ -88,35 +68,14 @@ const Banner = () => {
       </div>
 
       {/* Popup Form */}
-     {showForm && (
+      {showForm && (
         <div className="popup-overlay">
           <div className="popup-form">
             <h2>Contact Us</h2>
-            <form onSubmit={handleSubmit}>
-              <input
-                type="text"
-                name="name"
-                placeholder="Your Name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Your Email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-              />
-              <textarea
-                name="message"
-                placeholder="Your Message"
-                rows="4"
-                value={formData.message}
-                onChange={handleChange}
-                required
-              ></textarea>
+            <form>
+              <input type="text" placeholder="Your Name" required />
+              <input type="email" placeholder="Your Email" required />
+              <textarea placeholder="Your Message" rows="4" required></textarea>
               <button type="submit">Send</button>
               <button
                 type="button"

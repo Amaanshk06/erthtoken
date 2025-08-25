@@ -25,7 +25,7 @@ function Footer() {
                                 <img src="./assets/images/social/ttl.png" alt="telegram" />   
                             </a>
                             <a href="https://x.com/ai_ansr_x?s=11" target="_blank" rel="noopener noreferrer">
-                                <img src="./assets/images/social/tx.png" alt="twitter" />
+                                <img src="./assets/images/social/tg.png" alt="twitter" />
                             </a>
                         </div>
                     </div>
