@@ -16,11 +16,11 @@ function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const openBannerPopup = () => {
-    const bannerBtn = document.getElementById("contactFormBtn");
-    if (bannerBtn) {
-      bannerBtn.click(); // 👈 simulate Banner button click
-    }
+  const downloadPDF = () => {
+    const link = document.createElement("a");
+    link.href = "/assets/docs/whitepaperansx.pdf"; // Path to your PDF in public folder
+    link.download = "documentation.pdf";
+    link.click();
   };
 
   return (
@@ -35,9 +35,9 @@ function Header() {
           <div className="header-custom1">
             <button
               className="header-btn"
-              onClick={openBannerPopup}
+              onClick={downloadPDF} // 👈 Download PDF on click
             >
-              Contact Us
+              Whitepaper
             </button>
           </div>
         </div>

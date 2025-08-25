@@ -22,10 +22,10 @@ function Footer() {
                     <div className="col-md-6">
                         <div className="footer-icons">
                             <a href="https://t.me/ansr_x" target="_blank" rel="noopener noreferrer">
-                                <img src="./assets/images/social/ttl.png" alt="telegram" />   
+                                <img src="./assets/images/welcome-hero/telegram.png" alt="telegram" />   
                             </a>
                             <a href="https://x.com/ai_ansr_x?s=11" target="_blank" rel="noopener noreferrer">
-                                <img src="./assets/images/social/tg.png" alt="twitter" />
+                                <img src="./assets/images/welcome-hero/twitter.png" alt="twitter" />
                             </a>
                         </div>
                     </div>

@@ -1,13 +1,10 @@
-import React, { useState } from "react";
-import { CgColorBucket } from "react-icons/cg";
+import React from "react";
 import { FaTelegramPlane, FaTwitter } from "react-icons/fa";
 
 const Banner = () => {
-  const [showForm, setShowForm] = useState(false);
-
   const handleDownload = () => {
     const link = document.createElement("a");
-    link.href = "/assets/docs/documentation.pdf";
+    link.href = "/assets/docs/whitepaperansx.pdf"; // PDF path
     link.download = "documentation.pdf";
     link.click();
   };
@@ -48,46 +45,25 @@ const Banner = () => {
         </div>
 
         <div className="banner-btn">
-          {/* Contact Us Popup Trigger */}
+          {/* Download Whitepaper PDF */}
           <button
-            id="contactFormBtn"
             className="banner-btn1"
-            onClick={() => setShowForm(true)}
-          >
-            Contact Us
-          </button>
-
-          {/* Download PDF */}
-          <button
-            className="banner-btn2"
             onClick={handleDownload}
           >
-            Documentation
+            Whitepaper
           </button>
+
+          {/* Apply for Whitelist */}
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSfgJBB9YSmmlQ3UvziMgCrK22yMMgB7Fl544mcRoMwx4b6rdQ/viewform" // replace with your form link
+            target="_blank"
+            rel="noopener noreferrer"
+            className="banner-btn2"
+          >
+            Apply for Whitelist
+          </a>
         </div>
       </div>
-
-      {/* Popup Form */}
-      {showForm && (
-        <div className="popup-overlay">
-          <div className="popup-form">
-            <h2>Contact Us</h2>
-            <form>
-              <input type="text" placeholder="Your Name" required />
-              <input type="email" placeholder="Your Email" required />
-              <textarea placeholder="Your Message" rows="4" required></textarea>
-              <button type="submit">Send</button>
-              <button
-                type="button"
-                onClick={() => setShowForm(false)}
-                className="close-btn"
-              >
-                Close
-              </button>
-            </form>
-          </div>
-        </div>
-      )}
     </section>
   );
 };

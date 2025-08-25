@@ -60,28 +60,62 @@ function Roadmap() {
     },
   ];
 
-  return (
-    <section className="roadmap-section text-center">
-      <h2 className="section-title">🗺️ $ANSX Roadmap — The Journey Ahead</h2>
-      <p className="section-subtitle">📌 Here’s how we’re building step by step:</p>
+  const sectionStyle = {
+    backgroundImage: 'url("/assets/images/welcome-hero/welcome-banner2.jpg")',
+    backgroundSize: "cover", // ensures image scales
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    position: "relative",
+    padding: "60px 20px",
+    color: "#fff",
+  };
 
-      <div className="timeline">
-        {roadmap.map((phase, index) => (
-          <div className="timeline-item" key={index}>
-            {/* <div className="timeline-icon">{phase.icon}</div> */}
-            <div className="timeline-content">
-              <h3>{phase.quarter}</h3>
-              <ul>
-                {phase.details.map((d, i) => (
-                  <li key={i}>🔹 {d}</li>
-                ))}
-              </ul>
-              {phase.tags.length > 0 && (
-                <p className="tags">{phase.tags.join(" ")}</p>
-              )}
+  const overlayStyle = {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    backgroundColor: "rgba(0,0,0,0.5)", // dark overlay for readability
+    zIndex: 0,
+  };
+
+  const contentStyle = {
+    position: "relative",
+    zIndex: 1,
+    textAlign: "center",
+    maxWidth: "1200px",
+    margin: "0 auto",
+  };
+
+  return (
+    <section style={sectionStyle}>
+      <div style={overlayStyle}></div>
+      <div style={contentStyle}>
+        <h2 className="section-title" style={{ fontSize: "2rem" }}>
+          🗺️ $ANSX Roadmap — The Journey Ahead
+        </h2>
+        <p className="section-subtitle" style={{ fontSize: "1rem", marginBottom: "40px" }}>
+          📌 Here’s how we’re building step by step:
+        </p>
+
+        <div className="timeline">
+          {roadmap.map((phase, index) => (
+            <div className="timeline-item" key={index} style={{ marginBottom: "30px" }}>
+              <div className="timeline-content">
+                <h3 style={{ fontSize: "1.25rem" }}>{phase.quarter}</h3>
+                <ul style={{ textAlign: "left", display: "inline-block", paddingLeft: "0" }}>
+                  {phase.details.map((d, i) => (
+                    <li key={i} style={{ marginBottom: "5px" }}>🔹 {d}</li>
+                  ))}
+                </ul>
+                {phase.tags.length > 0 && (
+                  <p className="tags" style={{ marginTop: "10px" }}>{phase.tags.join(" ")}</p>
+                )}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );

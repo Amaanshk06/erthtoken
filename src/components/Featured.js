@@ -20,13 +20,13 @@ const data = [
 
 const COLORS = [
     "#60A5FA",
-    "#93C5FD",
-    "#2563EB",
+    "#17375cff",
+    "#1d58d9ff",
     "#1E40AF",
-    "#6366F1",
-    "#A78BFA",
-    "#6366F1",
-    "#A78BFA",
+    "#4e50d4ff",
+    "#7a60c9ff",
+    "#8283daff",
+    "#ad9be5ff",
 ];
 
 const Featured = () => {
@@ -44,19 +44,19 @@ const Featured = () => {
                     <div className="featured-cards">
                         <div className="featured-card">
                             <h4>🌱 Proposal Submission :</h4>
-                            <p>ERTH holders submit proposals on platform developments.</p>
+                            <p>AnsarX holders can submit new project ideas, community utilities, and ecosystem improvements.</p>
                         </div>
                         <div className="featured-card">
-                            <h4>🍃 Community Feedback :</h4>
-                            <p>Community comment and votes on projects.</p>
+                            <h4>💬 Community Feedback :</h4>
+                            <p>The community reviews, discusses, and votes on submitted proposals.</p>
                         </div>
                         <div className="featured-card">
                             <h4>👩‍🔬 Expert Council Review :</h4>
-                            <p>A panel of specialists evaluates proposals, considering community input.</p>
+                            <p>A selected advisory panel evaluates proposals with input from the community.</p>
                         </div>
                         <div className="featured-card">
                             <h4>✅ Decision & Implementation :</h4>
-                            <p>Approved proposals are executed, with transparency reports published.</p>
+                            <p>Approved projects are executed, with progress updates shared transparently.</p>
                         </div>
                     </div>
                 </div>
