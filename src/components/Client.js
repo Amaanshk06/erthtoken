@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 function FAQ() {
   const faqs = [
@@ -14,8 +15,7 @@ function FAQ() {
     },
     {
       question: "Do I need to stake?",
-      answer:
-        "No. Rewards are automatic—just hold ANSX in your wallet.",
+      answer: "No. Rewards are automatic—just hold ANSX in your wallet.",
     },
     {
       question: "What’s the total supply?",
@@ -82,20 +82,51 @@ function FAQ() {
 
   return (
     <section className="faq-section">
-      <h2 className="faq-title">FAQs (ANSX)</h2>
+      <motion.h2
+        className="faq-title"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        FAQs (ANSX)
+      </motion.h2>
+
       <div className="faq-container">
         {faqs.map((faq, index) => (
-          <div key={index} className="faq-item">
-            <div className="faq-question" onClick={() => toggleFAQ(index)}>
+          <motion.div
+            key={index}
+            className="faq-item"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: index * 0.05 }}
+          >
+            {/* Question */}
+            <div
+              className="faq-question"
+              onClick={() => toggleFAQ(index)}
+            >
               <span>{faq.question}</span>
               <span className="faq-toggle">
                 {activeIndex === index ? "−" : "+"}
               </span>
             </div>
-            {activeIndex === index && (
-              <div className="faq-answer">{faq.answer}</div>
-            )}
-          </div>
+
+            {/* Answer with smooth animation */}
+            <AnimatePresence>
+              {activeIndex === index && (
+                <motion.div
+                  className="faq-answer"
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  <p>{faq.answer}</p>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.div>
         ))}
       </div>
     </section>

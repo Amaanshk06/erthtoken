@@ -2,44 +2,62 @@
   padding: 0;
   margin: 0;
 }
+
 .floating-btn {
   position: fixed;
   right: 30px;
-  bottom:70px;
-  text-decoration: none;
-  background-color: rgb(84, 158, 89);
-  color: white;
-  border: 1px solid rgb(0, 0, 0, 0.4);
-  border-radius: 50%;
-  padding: 10px 15px;
-  z-index: 3;
-  font-size: 18px;
-  transition: backgroud-color 0,3s;
+  bottom: 70px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .floating-btn:hover {
-  cursor: pointer;
-  background-color: #f16319;
+  transform: scale(1.1);
 }
+
+/* Icon inside floating button */
+.scroll-icon {
+  width: 38px;
+  height: 38px;
+  animation: bounce 1.5s infinite ease-in-out;
+}
+
+/* Bounce effect */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
 
 .center {
   align-content: center;
 }
 
- /* header secton start*/
+/* header secton start*/
 header {
   z-index: 2;
   position: sticky;
   top: 0;
   overflow-x: hidden;
-    background: transparent;
+  background: transparent;
   transition: background 0.4s ease, box-shadow 0.4s ease;
 }
+
 header.scrolled {
   background: black;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.5); /* Optional shadow */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  /* Optional shadow */
 }
-.header-btn{
+
+.header-btn {
   margin-left: 400px;
   margin-top: 2px;
   position: relative;
@@ -50,39 +68,44 @@ header.scrolled {
   background-color: rgb(84, 158, 89);
   z-index: 1;
 }
-.header-btn:hover{
-    background-color: #f16319;
+
+.header-btn:hover {
+  background-color: #f16319;
   transition: all 0.4s;
   cursor: pointer;
 }
+
 .logo h3 {
   position: absolute;
   display: flex;
   color: white;
   margin: 20px 80px;
 }
-.header-custom1{
+
+.header-custom1 {
   margin-top: 20px;
   margin-left: 720px;
 }
+
 /* header section end*/
 
 /* banner section start*/
 .banner::before {
   content: "";
   position: absolute;
-  top: 0;                
+  top: 0;
   left: 0;
   right: 0;
   width: 100%;
   height: 641px;
   z-index: 0;
-  pointer-events: none;  
+  pointer-events: none;
 }
 
-.banner{
+.banner {
   margin-top: 0;
 }
+
 .banner {
   background-image: url(/public/assets/images/welcome-hero/welcome-banner3.jpeg);
   background-size: cover;
@@ -104,28 +127,30 @@ header.scrolled {
 
 .banner p {
   position: relative;
-  max-width: 1020px;       
-  margin: 20px auto;       
+  max-width: 1020px;
+  margin: 20px auto;
   padding: 0 15px;
-  font-size: 17px;         
-  line-height: 1.4;       
-  font-weight: 400;        
-  color: #ffffff;         
-  text-align: justify;    
+  font-size: 17px;
+  line-height: 1.4;
+  font-weight: 400;
+  color: #ffffff;
+  text-align: justify;
   z-index: 1;
 }
+
 .banner p span {
   font-size: 19px;
-  color: #f16319; 
+  color: #f16319;
   font-weight: 600;
 }
 
 
-.social-icons{
+.social-icons {
   margin: 10px;
   font-size: 35px;
   z-index: 1000;
 }
+
 .social-icons a {
   cursor: pointer;
   pointer-events: auto;
@@ -133,11 +158,13 @@ header.scrolled {
   padding-left: 20px;
 }
 
-.banner-btn{
+.banner-btn {
   margin: 40px;
 
 }
+
 .banner-btn1 {
+  text-decoration: none;
   position: relative;
   padding: 9px 10px;
   color: white;
@@ -146,9 +173,11 @@ header.scrolled {
   background-color: rgb(84, 158, 89);
   z-index: 1;
 }
-button{
+
+button {
   margin: 10px;
 }
+
 .banner-btn2 {
   text-decoration: none;
   position: relative;
@@ -165,11 +194,13 @@ button{
   transition: all 0.4s;
   cursor: pointer;
 }
+
 .banner-btn2:hover {
   background-color: #f16319;
   transition: all 0.4s;
   cursor: pointer;
 }
+
 /* banner section end*/
 
 /* info section start*/
@@ -234,7 +265,7 @@ button{
   padding: 20px;
   border-radius: 12px;
   width: 40%;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
 
 .timeline-content h3 {
@@ -278,7 +309,8 @@ button{
 
 .featured-left h2 {
   font-size: 28px;
-  color: rgb(84, 158, 89); /* light green */
+  color: rgb(84, 158, 89);
+  /* light green */
   margin-bottom: 15px;
 }
 
@@ -386,7 +418,7 @@ button{
 }
 
 .faq-question:hover {
-  color: #f16319; 
+  color: #f16319;
 }
 
 .faq-toggle {
@@ -407,10 +439,10 @@ button{
 footer {
   background-color: #000000;
   padding: 10px;
-  height: 60px; 
+  height: 60px;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 50px; 
+  padding: 15px 50px;
 }
 
 .footer-p {
@@ -422,7 +454,7 @@ footer {
 
 .footer-icons {
   display: flex;
-  justify-content: flex-end; 
+  justify-content: flex-end;
 }
 
 .footer-icons img {
@@ -432,15 +464,15 @@ footer {
   will-change: transform;
   position: relative;
   border-radius: 50%;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
-  background-color: transparent; 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background-color: transparent;
 }
 
 .footer-icons img:hover {
-  transform: translateY(-10px) scale(1.1); 
-  filter: brightness(1.2); 
+  transform: translateY(-10px) scale(1.1);
+  filter: brightness(1.2);
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-  background-color: rgb(84, 158, 89); 
+  background-color: rgb(84, 158, 89);
 }
 
 .footer-icons a {
@@ -450,10 +482,11 @@ footer {
 /* Mobile (default) - already covered by your existing CSS */
 /* Mobile adjustments */
 @media (max-width: 767px) {
-  
+
   /* Header adjustments */
   .header-btn {
-    margin-left: 30px; /* reduce left margin */
+    margin-left: 30px;
+    /* reduce left margin */
     margin-top: 3px;
     padding: 5px 8px;
     font-size: 14px;
@@ -491,7 +524,8 @@ footer {
     gap: 10px;
   }
 
-  .banner-btn1, .banner-btn2 {
+  .banner-btn1,
+  .banner-btn2 {
     padding: 8px 0;
     font-size: 14px;
   }
@@ -506,7 +540,8 @@ footer {
 
   /* Featured section adjustments */
   .featured-container {
-    grid-template-columns: 1fr; /* stack cards vertically */
+    grid-template-columns: 1fr;
+    /* stack cards vertically */
     gap: 20px;
     padding: 0 10px;
   }
@@ -520,12 +555,14 @@ footer {
   }
 
   .timeline-content {
-    width: 90%; /* full width on mobile */
+    width: 90%;
+    /* full width on mobile */
     margin: 0 auto 20px auto;
   }
 
   .timeline-item {
-    flex-direction: column !important; /* stack items */
+    flex-direction: column !important;
+    /* stack items */
     align-items: center;
   }
 
@@ -567,9 +604,10 @@ footer {
 
 /* Tablets (768px - 1024px) */
 @media (min-width: 768px) and (max-width: 1024px) {
-  
+
   .header-btn {
-    margin-left: 320px; /* reduce left margin for smaller screens */
+    margin-left: 320px;
+    /* reduce left margin for smaller screens */
   }
 
   .header-custom1 {
@@ -592,12 +630,14 @@ footer {
   }
 
   .featured-container {
-    grid-template-columns: 1fr; /* single column for tablets */
+    grid-template-columns: 1fr;
+    /* single column for tablets */
     gap: 20px;
   }
 
   .timeline-content {
-    width: 70%; /* adjust width on smaller screens */
+    width: 70%;
+    /* adjust width on smaller screens */
   }
 
   .faq-question {
@@ -631,7 +671,8 @@ footer {
   }
 
   .featured-container {
-    grid-template-columns: repeat(2, 1fr); /* keep two-column layout */
+    grid-template-columns: repeat(2, 1fr);
+    /* keep two-column layout */
     gap: 30px;
   }
 
@@ -644,16 +685,19 @@ footer {
 @media (min-width: 1441px) {
 
   .header-btn {
-    margin-left: 400px; /* original value */
+    margin-left: 400px;
+    /* original value */
   }
 
   .header-custom1 {
-    margin-left: 720px; /* original value */
+    margin-left: 720px;
+    /* original value */
   }
 
   .banner {
     padding: 15% 0 30%;
-    height: 741px; /* original value */
+    height: 741px;
+    /* original value */
   }
 
   .banner h1 {
@@ -670,16 +714,7 @@ footer {
   }
 
   .timeline-content {
-    width: 40%; /* original value */
-  }
-}
-
-/* Optional: floating button responsiveness */
-@media (max-width: 768px) {
-  .floating-btn {
-    right: 15px;
-    bottom: 50px;
-    font-size: 16px;
-    padding: 8px 12px;
+    width: 40%;
+    /* original value */
   }
 }

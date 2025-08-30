@@ -6,6 +6,7 @@ import {
     ResponsiveContainer,
     Tooltip,
 } from "recharts";
+import { motion } from "framer-motion";
 
 const data = [
     { name: "Presale", value: 42 },
@@ -29,40 +30,81 @@ const COLORS = [
     "#ad9be5ff",
 ];
 
+// Motion variants
+const fadeUp = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
+
+const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.2,
+        },
+    },
+};
+
 const Featured = () => {
     return (
         <section className="featured-section">
             <div className="featured-container">
 
                 {/* LEFT SIDE CONTENT */}
-                <div className="featured-left">
-                    <h2>Project Proposals & Community Engagement</h2>
-                    <p>
+                <motion.div
+                    className="featured-left"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.3 }}
+                    variants={staggerContainer}
+                >
+                    <motion.h2 variants={fadeUp}>
+                        Project Proposals & Community Engagement
+                    </motion.h2>
+                    <motion.p variants={fadeUp}>
                         Discover how ERTH's token economy and governance structure drive real-world environmental impact.
-                    </p>
+                    </motion.p>
 
                     <div className="featured-cards">
-                        <div className="featured-card">
-                            <h4>🌱 Proposal Submission :</h4>
-                            <p>AnsarX holders can submit new project ideas, community utilities, and ecosystem improvements.</p>
-                        </div>
-                        <div className="featured-card">
-                            <h4>💬 Community Feedback :</h4>
-                            <p>The community reviews, discusses, and votes on submitted proposals.</p>
-                        </div>
-                        <div className="featured-card">
-                            <h4>👩‍🔬 Expert Council Review :</h4>
-                            <p>A selected advisory panel evaluates proposals with input from the community.</p>
-                        </div>
-                        <div className="featured-card">
-                            <h4>✅ Decision & Implementation :</h4>
-                            <p>Approved projects are executed, with progress updates shared transparently.</p>
-                        </div>
+                        {[
+                            {
+                                title: "🌱 Proposal Submission :",
+                                text: "AnsarX holders can submit new project ideas, community utilities, and ecosystem improvements.",
+                            },
+                            {
+                                title: "💬 Community Feedback :",
+                                text: "The community reviews, discusses, and votes on submitted proposals.",
+                            },
+                            {
+                                title: "👩‍🔬 Expert Council Review :",
+                                text: "A selected advisory panel evaluates proposals with input from the community.",
+                            },
+                            {
+                                title: "✅ Decision & Implementation :",
+                                text: "Approved projects are executed, with progress updates shared transparently.",
+                            },
+                        ].map((card, i) => (
+                            <motion.div
+                                key={i}
+                                className="featured-card"
+                                variants={fadeUp}
+                            >
+                                <h4>{card.title}</h4>
+                                <p>{card.text}</p>
+                            </motion.div>
+                        ))}
                     </div>
-                </div>
+                </motion.div>
 
                 {/* RIGHT SIDE CHART */}
-                <div className="featured-right">
+                <motion.div
+                    className="featured-right"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.8 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                >
                     <div className="total-supply">Token Distribution</div>
 
                     <div className="chart-wrapper">
@@ -78,7 +120,10 @@ const Featured = () => {
                                     dataKey="value"
                                 >
                                     {data.map((entry, index) => (
-                                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                                        <Cell
+                                            key={`cell-${index}`}
+                                            fill={COLORS[index % COLORS.length]}
+                                        />
                                     ))}
                                 </Pie>
                                 <Tooltip />
@@ -87,15 +132,30 @@ const Featured = () => {
                     </div>
 
                     {/* LEGEND */}
-                    <div className="legend">
+                    <motion.div
+                        className="legend"
+                        initial="hidden"
+                        whileInView="visible"
+                        variants={staggerContainer}
+                        viewport={{ once: true, amount: 0.3 }}
+                    >
                         {data.map((item, i) => (
-                            <div key={i} className="legend-item">
-                                <span className="legend-color" style={{ background: COLORS[i] }}></span>
-                                <span>{item.name} {item.value}%</span>
-                            </div>
+                            <motion.div
+                                key={i}
+                                className="legend-item"
+                                variants={fadeUp}
+                            >
+                                <span
+                                    className="legend-color"
+                                    style={{ background: COLORS[i] }}
+                                ></span>
+                                <span>
+                                    {item.name} {item.value}%
+                                </span>
+                            </motion.div>
                         ))}
-                    </div>
-                </div>
+                    </motion.div>
+                </motion.div>
             </div>
         </section>
     );

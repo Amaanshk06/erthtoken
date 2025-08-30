@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 function Roadmap() {
   const roadmap = [
@@ -62,7 +63,7 @@ function Roadmap() {
 
   const sectionStyle = {
     backgroundImage: 'url("/assets/images/welcome-hero/welcome-banner2.jpg")',
-    backgroundSize: "cover", // ensures image scales
+    backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
     position: "relative",
@@ -76,7 +77,7 @@ function Roadmap() {
     left: 0,
     width: "100%",
     height: "100%",
-    backgroundColor: "rgba(0,0,0,0.5)", // dark overlay for readability
+    backgroundColor: "rgba(0,0,0,0.5)",
     zIndex: 0,
   };
 
@@ -88,32 +89,78 @@ function Roadmap() {
     margin: "0 auto",
   };
 
+  // Animation variants
+  const fadeUp = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
     <section style={sectionStyle}>
       <div style={overlayStyle}></div>
       <div style={contentStyle}>
-        <h2 className="section-title" style={{ fontSize: "2rem" }}>
+        {/* Section Title */}
+        <motion.h2
+          className="section-title"
+          style={{ fontSize: "2rem" }}
+          initial="hidden"
+          whileInView="visible"
+          variants={fadeUp}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
           🗺️ $ANSX Roadmap — The Journey Ahead
-        </h2>
-        <p className="section-subtitle" style={{ fontSize: "1rem", marginBottom: "40px" }}>
-          📌 Here’s how we’re building step by step:
-        </p>
+        </motion.h2>
 
+        <motion.p
+          className="section-subtitle"
+          style={{ fontSize: "1rem", marginBottom: "40px" }}
+          initial="hidden"
+          whileInView="visible"
+          variants={fadeUp}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          📌 Here’s how we’re building step by step:
+        </motion.p>
+
+        {/* Timeline */}
         <div className="timeline">
           {roadmap.map((phase, index) => (
-            <div className="timeline-item" key={index} style={{ marginBottom: "30px" }}>
+            <motion.div
+              className="timeline-item"
+              key={index}
+              style={{ marginBottom: "30px" }}
+              initial="hidden"
+              whileInView="visible"
+              variants={fadeUp}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
+              viewport={{ once: true }}
+            >
               <div className="timeline-content">
-                <h3 style={{ fontSize: "1.25rem" }}>{phase.quarter}</h3>
-                <ul style={{ textAlign: "left", display: "inline-block", paddingLeft: "0" }}>
+                <h3 style={{ fontSize: "1.25rem" }}>
+                  {phase.icon} {phase.quarter}
+                </h3>
+                <ul
+                  style={{
+                    textAlign: "left",
+                    display: "inline-block",
+                    paddingLeft: "0",
+                  }}
+                >
                   {phase.details.map((d, i) => (
-                    <li key={i} style={{ marginBottom: "5px" }}>🔹 {d}</li>
+                    <li key={i} style={{ marginBottom: "5px" }}>
+                      🔹 {d}
+                    </li>
                   ))}
                 </ul>
                 {phase.tags.length > 0 && (
-                  <p className="tags" style={{ marginTop: "10px" }}>{phase.tags.join(" ")}</p>
+                  <p className="tags" style={{ marginTop: "10px" }}>
+                    {phase.tags.join(" ")}
+                  </p>
                 )}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
